@@ -5,31 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
 </head>
+
+<style>
+    /* Scrollbar Hide Karne Ke Liye CSS */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        /* IE aur Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+</style>
 
 <body class="bg-[#E8E0D4]">
 
     <!-- navbar -->
-    <nav class="bg-white shadow-md px-10">
-        <div class="max-w-9xl mx-auto ">
+    <nav class="bg-white shadow-md px-4 sm:px-10">
+        <div class="max-w-9xl mx-auto">
             <div class="flex justify-between items-center py-4">
-                <div class="text-lg font-semibold"><img class="w-12" src="logo.jpg" alt=""></div>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-700 border-[2px] px-3 py-1 rounded-full hover:text-gray-900">Contact us</a>
+                <!-- Logo -->
+                <div class="text-lg font-semibold">
+                    <img class="w-12" src="logo.jpg" alt="Logo">
                 </div>
+
+                <!-- Button -->
+                <button
+                    class="px-4 py-2 border border-gray-800 rounded-lg text-gray-800 hover:bg-gray-800 hover:text-white transition text-sm sm:text-base">
+                    Explore
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
-     <div class="w-full h-[70vh] sm:h-screen px-4 py2 mt-4">
-        <video class="w-full h-full object-cover rounded-b-3xl" muted loop autoplay  src="Main_6.mp4"></video>
-     </div>
+    <div class="w-full h-[70vh] sm:h-screen px-4 py2 mt-4">
+        <video class="w-full h-full object-cover rounded-b-3xl" muted loop autoplay src="video/Main_6.mp4"></video>
+    </div>
 
 
     <div class="bg-[#E8E0D4] text-black w-full  flex-col  flex items-center justify-self-center">
@@ -49,221 +68,200 @@
         </div>
     </div>
 
-      <!-- Image Replacement Section -->
-      <div class="flex justify-center items-center gap-4 flex-wrap">
-        <div class="w-64 h-64 bg-gray-300 rounded-xl flex justify-center items-center">
-            <p class="text-gray-500">Image 1</p>
+    <!-- Image Replacement Section -->
+    <div class="flex justify-center items-center gap-4 flex-wrap">
+        <div class="w-72 h-72 bg-gray-300 rounded-xl flex flex-col overflow-hidden justify-center items-center">
+            <img class="w-full h-full object-cover" src="images/RAJA RANI DREAM HOMES.jpg" alt="">
+            <h1 class="mt-3 font-semibold text-lg mb-2">RAJA RANI DREAM HOMES</h1>
         </div>
-        <div class="w-72 h-72 bg-gray-400 rounded-xl flex justify-center items-center">
-            <p class="text-gray-500">Image 2</p>
+        <div
+            class="sm:w-96 h-80 w-80 sm:h-96 bg-gray-400 rounded-xl flex flex-col overflow-hidden justify-center items-center">
+            <img class="w-full h-full object-cover" src="images/RAJA RANI ROYAL HOMES.jpg" alt="">
+            <h1 class="mt-3 font-semibold text-lg mb-2">RAJA RANI ROYAL HOMES</h1>
         </div>
-        <div class="w-64 h-64 bg-gray-300 rounded-xl flex justify-center items-center">
-            <p class="text-gray-500">Image 3</p>
+        <div class="w-72 h-72 bg-gray-300 rounded-xl flex flex-col overflow-hidden justify-center items-center">
+            <img class="w-full h-full object-cover" src="images/RAJA RANI GREEN VALLEY.jpg" alt="">
+            <h1 class="mt-3 font-semibold text-lg mb-2">RAJA RANI GREEN VALLEY</h1>
         </div>
     </div>
 
     <div class="max-w-9xl  mt-10  bg-[#E8E0D4] rounded-xl p-8 md:flex md:items-center md:gap-8 ">
         <!-- Left Section with Background Color -->
         <div class="w-full md:w-1/2 h-[50vh] overflow-hidden  bg-gray-300 rounded-xl flex justify-center items-center">
-            <img class="w-full h-full object-cover" src="https://static.wixstatic.com/media/69ad8d_8b8501961a364fa482b33bc516ea5904~mv2.jpg/v1/fill/w_706,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/69ad8d_8b8501961a364fa482b33bc516ea5904~mv2.jpg" alt="">
+            <img class="w-full h-full object-cover"
+                src="https://static.wixstatic.com/media/69ad8d_8b8501961a364fa482b33bc516ea5904~mv2.jpg/v1/fill/w_706,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/69ad8d_8b8501961a364fa482b33bc516ea5904~mv2.jpg"
+                alt="">
         </div>
-        
+
         <!-- Right Section -->
         <div class="w-full md:w-1/2 text-center md:text-left">
             <h2 class="text-3xl font-serif italic text-gray-800 mt-3">Introduction</h2>
-            <p class="mt-4 text-gray-600">Arka Heights is a luxurious residential project situated in the emerging residential area of Berhampur. Offering a blend of comfort, style, and convenience, this premium project promises an extravagant living experience to its residents.</p>
-            <button class="mt-6 px-6 py-2 border border-gray-800 rounded-lg text-gray-800 hover:bg-gray-800 hover:text-white transition">Explore</button>
+            <p class="mt-4 text-gray-600">Raja Rani Real Estate Pvt. Ltd. is a team of skilled technocrats and engineers
+                dedicated to real estate development in Berhampur since 2007. We take a comprehensive approach,
+                integrating innovative design, premium quality materials, and modern amenities to enhance your lifestyle
+                and deliver lasting value.</p>
+            <button
+                class="mt-6 px-6 py-2 border border-gray-800 rounded-lg text-gray-800 hover:bg-gray-800 hover:text-white transition">Explore</button>
         </div>
     </div>
 
     <!-- Highlights -->
     <div class="max-w-9xl mx-auto p-6 flex flex-col gap-6 bg-[#E8E0D4] shadow-lg rounded-lg mt-10">
         <h2 class="text-3xl font-bold text-black font-serif italic text-center mb-4">Highlights</h2>
-        <ul class="space-y-2 text-gray-700 ">
-            <li class=" flex gap-2 items-start text-black">
+        <ul class="space-y-2 text-gray-700">
+            <li class="flex gap-2 items-start text-black">
                 <i class="text-black text-[10px] mt-1 ri-checkbox-blank-circle-fill"></i>
-                Project Approved by Berhampur Development Authority and statutory departments like Central Ground Water Board, Fire Etc.
+                Approved & Certified - Project approved by Berhampur Development Authority and statutory bodies like
+                Central Ground Water Board, Fire Department, etc.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                RERA registration obtained.
+                RERA Registered - Ensuring compliance, transparency, and accountability.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                Cosmopolitan standard of design and development by Experienced Team.
+                Modern & Cosmopolitan Design - Developed by an experienced team with a focus on contemporary aesthetics.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                Vastu Compliant spacious flats.
+                Vastu-Compliant Homes - Spacious flats designed to align with Vastu principles for positive living.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                Earthquake Resistant Building vetted by NIT Rourkela and IIT Delhi.
+                Earthquake-Resistant Structure - Built with advanced safety measures for enhanced durability.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                Clear Land title, self-owned and development.
+                Clear Land Title & Ownership - Self-owned development with a transparent legal framework.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                Contemporary Design and Efficient Planning with spacious rooms and large balconies.
+                Efficient Planning & Spacious Layouts - Featuring large balconies, airy rooms, and smart space
+                utilization.
             </li>
-            <li class=" flex gap-2 items-center text-black">
+            <li class="flex gap-2 items-center text-black">
                 <i class="text-black text-[10px] ri-checkbox-blank-circle-fill"></i>
-                Transparent terms and conditions, No hidden cost and discrepancies.
+                Transparent Transactions - No hidden costs, no discrepancies—what you see is what you get!
             </li>
         </ul>
     </div>
 
-    <section class="flex flex-col items-center justify-center mt-8 sm:flex-row gap-4 p-4">
-        <div class="flex-1 max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
-            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" 
-                 src="https://static.wixstatic.com/media/69ad8d_c8223e2ac84744cb9d6a81ffcdfbcbb3~mv2.jpg/v1/fill/w_671,h_608,al_c,q_85,enc_avif,quality_auto/Arka%20Heights%20-%20living%20area.jpg0" 
-                 alt="Living Room">
+    <h1 class="text-5xl text-center mt-7 font-bold">Our Amenities</h1>
+    <section class="flex overflow-x-auto scrollbar-hide gap-4 p-4 mt-8">
+        <!-- Section 1: Security -->
+        <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
+            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" src="images/security.jpg"
+                alt="Living Room">
             <div class="p-6 text-center">
-                <h2 class="text-3xl italic font-serif text-gray-800">Living</h2>
+                <h2 class="text-3xl italic font-serif text-gray-800">Security</h2>
                 <p class="mt-3 text-gray-600">
-                    A well-designed space striking the right balance between comfort and functionality. Relax, refresh, and create memories with your loved ones.
+                    Experience a secure and serene living environment with state-of-the-art security systems, ensuring
+                    peace of mind for you and your loved ones.
                 </p>
             </div>
         </div>
-        <div class="flex-1 max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
-            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" 
-                 src="https://static.wixstatic.com/media/69ad8d_c8223e2ac84744cb9d6a81ffcdfbcbb3~mv2.jpg/v1/fill/w_671,h_608,al_c,q_85,enc_avif,quality_auto/Arka%20Heights%20-%20living%20area.jpg0" 
-                 alt="Living Room">
+
+        <!-- Section 2: CCTV Surveillance -->
+        <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
+            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" src="images/cctv.jpg" alt="Living Room">
             <div class="p-6 text-center">
-                <h2 class="text-3xl italic font-serif text-gray-800">Abode</h2>
+                <h2 class="text-3xl italic font-serif text-gray-800">CCTV Surveillance</h2>
                 <p class="mt-3 text-gray-600">
-                    A well-designed space striking the right balance between comfort and functionality. Relax, refresh, and create memories with your loved ones.
+                    A well-designed space offering the perfect blend of comfort, functionality, and advanced security
+                    with 24/7 CCTV surveillance, ensuring a safe and peaceful living experience for you and your loved
+                    ones.
                 </p>
             </div>
         </div>
-        <div class="flex-1 max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
-            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" 
-                 src="https://static.wixstatic.com/media/69ad8d_c8223e2ac84744cb9d6a81ffcdfbcbb3~mv2.jpg/v1/fill/w_671,h_608,al_c,q_85,enc_avif,quality_auto/Arka%20Heights%20-%20living%20area.jpg0" 
-                 alt="Living Room">
+
+        <!-- Section 3: Temple -->
+        <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
+            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" src="images/tample.jpg"
+                alt="Living Room">
             <div class="p-6 text-center">
-                <h2 class="text-3xl italic font-serif text-gray-800">Embrace</h2>
+                <h2 class="text-3xl italic font-serif text-gray-800">Temple</h2>
                 <p class="mt-3 text-gray-600">
-                    A well-designed space striking the right balance between comfort and functionality. Relax, refresh, and create memories with your loved ones.
+                    A serene temple space fostering peace and spirituality, providing a tranquil environment for prayer,
+                    meditation, and self-reflection.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 4: Gym -->
+        <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
+            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl"
+                src="images/gym-with-indoor-cycling-equipment.jpg" alt="Living Room">
+            <div class="p-6 text-center">
+                <h2 class="text-3xl italic font-serif text-gray-800">Gym</h2>
+                <p class="mt-3 text-gray-600">
+                    A well-equipped gym designed for fitness enthusiasts, offering modern machines and a motivating
+                    environment to help you stay active and healthy.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 5: Power Backup -->
+        <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
+            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" src="images/power.jpg" alt="Living Room">
+            <div class="p-6 text-center">
+                <h2 class="text-3xl italic font-serif text-gray-800">Power Backup</h2>
+                <p class="mt-3 text-gray-600">
+                    A well-designed space striking the right balance between comfort and functionality, equipped with
+                    power backup to ensure uninterrupted convenience. Relax, refresh, and create memories with your
+                    loved ones.
                 </p>
             </div>
         </div>
     </section>
 
-    <div class="max-w-4xl mt-6 mx-auto bg-white p-8 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-center mb-6">Contact Us</h1>
+ 
 
-        <!-- Contact Form -->
-        <form action="submit_form.php" method="POST" class="space-y-6">
-            <!-- Full Name -->
-            <div>
-                <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name (Required)</label>
-                <input type="text" id="fullName" name="fullName"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-8 mt-10 w-full">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+            <!-- Company Info -->
+            <div class="flex  justify-center flex-col">
+                <img class="w-20 text-center" src="logo.jpg" alt="">
+                <p class="mt-2 text-white">Luxury Has Evolved</p>
+                <p class="mt-2 font-semibold text-lg text-white">Address: Rajarani Tower, Infront of Tahasildar office,
+                    Kamapalli,Berhampur.</p>
             </div>
 
-            <!-- Phone Number -->
+            <!-- Quick Links -->
             <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Phone (Required)</label>
-                <input type="tel" id="phone" name="phone"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                <h3 class="text-xl font-semibold">Quick Links</h3>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="#" class="hover:text-gray-400">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Location</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Plans</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
+                </ul>
             </div>
 
-            <!-- Email -->
+            <!-- Contact Info -->
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email (Required)</label>
-                <input type="email" id="email" name="email"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
+                <h3 class="text-xl font-semibold">Contact</h3>
+                <p class="mt-2 text-gray-400">patrodeelipkumar@gmail.Com</p>
+                <p class="text-gray-400">+91 88958 97892</p>
 
-            <!-- Flat Type Selection -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Select the Type of Flat (Required)</label>
-                <div class="mt-2 space-y-2">
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="2BHK" class="mr-2" required>
-                        <span>2BHK</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="3BHK" class="mr-2">
-                        <span>3BHK</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="3BHK DUPLEX" class="mr-2">
-                        <span>3BHK DUPLEX</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="5BHK DUPLEX" class="mr-2">
-                        <span>5BHK DUPLEX</span>
-                    </label>
+                <!-- Social Icons -->
+                <div class="flex justify-center md:justify-start gap-4 mt-3">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
 
-            <!-- Message -->
-            <div>
-                <label for="message" class="block  text-sm font-medium text-gray-700">Message</label>
-                <textarea id="message" name="message" rows="4"
-                    class="mt-1 block w-full p-2 border sm:resize-none border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-            </div>
-
-            <!-- Submit Button -->
-            <div>
-                <button type="submit"
-                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <!-- Footer Section -->
-<footer class="bg-gray-900 text-white py-8 mt-10 w-full">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        
-        <!-- Company Info -->
-        <div class="flex items-center justify-center flex-col">
-            <img class="w-20 text-center" src="logo.jpg" alt="">
-            <p class="mt-2 text-gray-400">Luxury Has Evolved</p>
         </div>
 
-        <!-- Quick Links -->
-        <div>
-            <h3 class="text-xl font-semibold">Quick Links</h3>
-            <ul class="mt-2 space-y-2">
-                <li><a href="#" class="hover:text-gray-400">Home</a></li>
-                <li><a href="#" class="hover:text-gray-400">Location</a></li>
-                <li><a href="#" class="hover:text-gray-400">Plans</a></li>
-                <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
-            </ul>
+        <!-- Bottom Text -->
+        <div class="text-center text-gray-500 mt-6 text-sm">
+            © 2025 Raja Rani Heights. All rights reserved.
         </div>
+    </footer>
 
-        <!-- Contact Info -->
-        <div>
-            <h3 class="text-xl font-semibold">Contact</h3>
-            <p class="mt-2 text-gray-400">contact@arkaheights.in</p>
-            <p class="text-gray-400">+91 706 475 5557</p>
-
-            <!-- Social Icons -->
-            <div class="flex justify-center md:justify-start gap-4 mt-3">
-                <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Bottom Text -->
-    <div class="text-center text-gray-500 mt-6 text-sm">
-        © 2025 Arka Heights. All rights reserved.
-    </div>
-</footer>
-
-<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 
 </body>
 
