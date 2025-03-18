@@ -36,6 +36,14 @@
                     required>
             </div>
 
+            <!-- Choose Apartment -->
+            <div>
+                <label for="apartment" class="block text-sm font-medium text-gray-700">Choose Apartment</label>
+                <input type="text" id="apartment" name="apartment"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                    readonly>
+            </div>
+
             <!-- Flat Type Selection -->
             <div>
                 <label class="block text-sm font-medium text-gray-700">Select the Type of Flat (Required)</label>
@@ -47,14 +55,6 @@
                     <label class="flex items-center">
                         <input type="radio" name="flatType" value="3BHK" class="mr-2">
                         <span>3BHK</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="3BHK DUPLEX" class="mr-2">
-                        <span>3BHK DUPLEX</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="5BHK DUPLEX" class="mr-2">
-                        <span>5BHK DUPLEX</span>
                     </label>
                 </div>
             </div>
@@ -75,5 +75,32 @@
             </div>
         </form>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to set the value of the apartment field if the query parameter is present
+        function setApartmentField() {
+            const apartment = getQueryParam('apartment');
+            if (apartment) {
+                const apartmentInput = document.getElementById('apartment');
+                if (apartmentInput) {
+                    apartmentInput.value = apartment;
+                } else {
+                    console.error('Input field with id "apartment" not found.');
+                }
+            } else {
+                console.warn('No "apartment" query parameter found in the URL.');
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = setApartmentField;
+    </script>
 </body>
 </html>

@@ -7,12 +7,15 @@ require '../mailer/SMTP.php';
 require '../mailer/Exception.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullName = $_POST['fullName'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $flatType = $_POST['flatType'];
-    $message = $_POST['message'];
+    // Retrieve form data
+    $fullName = htmlspecialchars($_POST['fullName']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $email = htmlspecialchars($_POST['email']);
+    $flatType = htmlspecialchars($_POST['flatType']);
+    $apartment = htmlspecialchars($_POST['apartment']); // New field
+    $message = htmlspecialchars($_POST['message']);
 
+    // Initialize PHPMailer
     $mail = new PHPMailer(true);
 
     try {
@@ -30,18 +33,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addAddress('patrasagarika654@gmail.com'); // Your target email
         $mail->isHTML(true);
         $mail->Subject = "New Contact Form Submission";
-        $mail->Body = "<h2>Contact Form Details</h2>
+
+        // Email Body with the new apartment field
+        $mail->Body = "
+            <h2>Contact Form Details</h2>
             <p><strong>Full Name:</strong> $fullName</p>
             <p><strong>Phone:</strong> $phone</p>
             <p><strong>Email:</strong> $email</p>
             <p><strong>Flat Type:</strong> $flatType</p>
-            <p><strong>Message:</strong> $message</p>";
-        
+            <p><strong>Apartment:</strong> $apartment</p>
+            <p><strong>Message:</strong> $message</p>
+        ";
+
+        // Send the email
         $mail->send();
-        echo "<script>alert('Your message has been sent successfully!'); window.location.href='index.html';</script>";
+
+        // Success message and redirect
+        echo "<script>
+                alert('Your message has been sent successfully!');
+                window.location.href = 'index.html';
+              </script>";
     } catch (Exception $e) {
-        echo "<script>alert('Error sending email. Please try again later.'); window.location.href='index.html';</script>";
+        // Error message and redirect
+        echo "<script>
+                alert('Error sending email. Please try again later.');
+                window.location.href = 'index.html';
+              </script>";
     }
 } else {
-    echo "<script>alert('Invalid request.'); window.location.href='index.html';</script>";
+    // Invalid request handling
+    echo "<script>
+            alert('Invalid request.');
+            window.location.href = 'index.html';
+          </script>";
 }
+?>

@@ -7,7 +7,7 @@
     <title>Contact Us</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="images/" type="image/x-icon">
 </head>
 
 <style>
@@ -33,13 +33,13 @@
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
                 <div class="text-lg font-semibold">
-                    <img class="w-12" src="logo.jpg" alt="Logo">
+                    <img class="w-12" src="images/image.png" alt="Logo">
                 </div>
 
                 <!-- Button -->
                 <button
                     class="px-4 py-2 border border-gray-800 rounded-lg text-gray-800 hover:bg-gray-800 hover:text-white transition text-sm sm:text-base">
-                    Explore
+                    <a href="#page2">Explore</a>
                 </button>
             </div>
         </div>
@@ -61,15 +61,63 @@
             <div class="flex items-center flex-col pb-20">
                 <h2 class="text-2xl font-bold text-center mb-8">Group Housing Project at Berhampur</h2>
                 <div class="space-x-4">
-                    <a href="#" class="border-2 border-black  px-6 py-2 rounded-full font-semibold">Get Quote</a>
-                    <a href="#" class="border-2 border-black  px-6 py-2 rounded-full font-semibold">Contact Us</a>
+                    <a href="https://wa.me/+918895897892?text=Hello%20I%20am%20interested%20in%20your%20properties.%20Please%20contact%20me."
+                        class="border-2 border-black px-6 py-2 rounded-full font-semibold hover:bg-black hover:text-white transition-all duration-300">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page2" class="mt-12 px-6 text-center">
+        <h2 class="text-3xl font-extrabold mb-10 text-black">Which property are you looking for?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Property 1 -->
+            <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <img src="images/RAJA RANI DREAM HOMES.jpg" alt="Raja Rani Dream Homes"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Raja Rani Dream Homes</h3>
+                    <button onclick="openContactForm('Raja Rani Dream Homes')"
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Click Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Property 2 -->
+            <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <img src="images/RAJA RANI GREEN VALLEY.jpg" alt="Raja Rani Royal Homes"
+                    class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Raja Rani Royal Homes</h3>
+                    <button onclick="openContactForm('Raja Rani Royal Homes')"
+                        class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        Click Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Property 3 -->
+            <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <img src="images/RAJA RANI GREEN VALLEY.jpg" alt="Raja" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Raja Rani Green Valley</h3>
+                    <button onclick="openContactForm('Raja')"
+                        class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        Click Now
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Image Replacement Section -->
-    <div class="flex justify-center items-center gap-4 flex-wrap">
+    <!-- <div class="flex justify-center items-center gap-4 flex-wrap">
         <div class="w-72 h-72 bg-gray-300 rounded-xl flex flex-col overflow-hidden justify-center items-center">
             <img class="w-full h-full object-cover" src="images/RAJA RANI DREAM HOMES.jpg" alt="">
             <h1 class="mt-3 font-semibold text-lg mb-2">RAJA RANI DREAM HOMES</h1>
@@ -83,14 +131,12 @@
             <img class="w-full h-full object-cover" src="images/RAJA RANI GREEN VALLEY.jpg" alt="">
             <h1 class="mt-3 font-semibold text-lg mb-2">RAJA RANI GREEN VALLEY</h1>
         </div>
-    </div>
+    </div> -->
 
     <div class="max-w-9xl  mt-10  bg-[#E8E0D4] rounded-xl p-8 md:flex md:items-center md:gap-8 ">
         <!-- Left Section with Background Color -->
         <div class="w-full md:w-1/2 h-[50vh] overflow-hidden  bg-gray-300 rounded-xl flex justify-center items-center">
-            <img class="w-full h-full object-cover"
-                src="https://static.wixstatic.com/media/69ad8d_8b8501961a364fa482b33bc516ea5904~mv2.jpg/v1/fill/w_706,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/69ad8d_8b8501961a364fa482b33bc516ea5904~mv2.jpg"
-                alt="">
+            <img class="w-full h-full object-cover" src="images/image.png" alt="">
         </div>
 
         <!-- Right Section -->
@@ -174,6 +220,18 @@
             </div>
         </div>
 
+        <!-- Section 6: Garden  -->
+        <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
+            <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" src="images/garden.png"
+                alt="Living Room">
+            <div class="p-6 text-center">
+                <h2 class="text-3xl italic font-serif text-gray-800">Temple</h2>
+                <p class="mt-3 text-gray-600">
+                    A serene apartment garden fostering peace and relaxation, providing a tranquil environment for leisure, meditation, and self-reflection
+                </p>
+            </div>
+        </div>
+
         <!-- Section 3: Temple -->
         <div class="flex-none max-w-sm bg-white shadow-lg rounded-xl overflow-hidden">
             <img class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-t-xl" src="images/tample.jpg"
@@ -214,15 +272,17 @@
         </div>
     </section>
 
- 
+
 
     <!-- Footer Section -->
-    <footer class="bg-gray-900 text-white py-8 mt-10 w-full">
+    <footer id="last" class="bg-gray-900 text-white py-8 mt-10 w-full">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
 
             <!-- Company Info -->
-            <div class="flex  justify-center flex-col">
-                <img class="w-20 text-center" src="logo.jpg" alt="">
+            <div class="flex  justify-center  flex-col">
+                <div class="w-full flex items-center justify-center">
+                    <img class="w-20 text-center" src="images/image.png" alt="">
+                </div>
                 <p class="mt-2 text-white">Luxury Has Evolved</p>
                 <p class="mt-2 font-semibold text-lg text-white">Address: Rajarani Tower, Infront of Tahasildar office,
                     Kamapalli,Berhampur.</p>
@@ -242,7 +302,7 @@
             <!-- Contact Info -->
             <div>
                 <h3 class="text-xl font-semibold">Contact</h3>
-                <p class="mt-2 text-gray-400">patrodeelipkumar@gmail.Com</p>
+                <p class="mt-2 text-gray-400">realestaterajarani@gmail.com</p>
                 <p class="text-gray-400">+91 88958 97892</p>
 
                 <!-- Social Icons -->
@@ -261,7 +321,11 @@
         </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    <script>
+        function openContactForm(apartment) {
+            window.location.href = `form.html?apartment=${encodeURIComponent(apartment)}`;
+        }
+    </script>
 
 </body>
 
