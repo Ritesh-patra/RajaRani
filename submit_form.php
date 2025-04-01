@@ -12,8 +12,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars($_POST['phone']);
     $email = htmlspecialchars($_POST['email']);
     $flatType = htmlspecialchars($_POST['flatType']);
-    $apartment = htmlspecialchars($_POST['apartment']); // New field
-    $message = htmlspecialchars($_POST['message']);
+    $apartment = htmlspecialchars($_POST['apartment']);
+
+    // Validate required fields
+    if (empty($fullName) || empty($phone) || empty($email) || empty($flatType) || empty($apartment)) {
+        echo "<script>
+                alert('All required fields must be filled.');
+                window.history.back();
+              </script>";
+        exit();
+    }
+
+    // Validate phone number (exactly 10 digits)
+    if (!preg_match('/^[0-9]{10}$/', $phone)) {
+        echo "<script>
+                alert('Phone number must be exactly 10 digits.');
+                window.history.back();
+              </script>";
+        exit();
+    }
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>
+                alert('Please enter a valid email address.');
+                window.history.back();
+              </script>";
+        exit();
+    }
 
     // Initialize PHPMailer
     $mail = new PHPMailer(true);
@@ -21,50 +47,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP Configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Change if using another provider
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'patrasagarika654@gmail.com'; // Replace with your email
-        $mail->Password = 'stma rtzg lfyy hsxu'; // Use App Password, NOT direct password
+        $mail->Username = 'deelipkumarpatro73@gmail.com';
+        $mail->Password = 'dezw ifes gvax tovk';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Email Settings
-        $mail->setFrom('patrasagarika654@gmail.com', 'Website Contact');
-        $mail->addAddress('patrasagarika654@gmail.com'); // Your target email
+        $mail->setFrom('deelipkumarpatro73@gmail.com', 'Website Contact Form');
+        $mail->addAddress('deelipkumarpatro73@gmail.com');
         $mail->isHTML(true);
-        $mail->Subject = "New Contact Form Submission";
+        $mail->Subject = "New Inquiry: $apartment - $flatType";
 
-        // Email Body with the new apartment field
+        // Email Body
         $mail->Body = "
-            <h2>Contact Form Details</h2>
+            <h2 style='color: #2563eb;'>New Contact Form Submission</h2>
+            <p><strong>Apartment:</strong> $apartment</p>
+            <p><strong>Flat Type:</strong> $flatType</p>
+            <hr style='margin: 15px 0;'>
             <p><strong>Full Name:</strong> $fullName</p>
             <p><strong>Phone:</strong> $phone</p>
             <p><strong>Email:</strong> $email</p>
-            <p><strong>Flat Type:</strong> $flatType</p>
-            <p><strong>Apartment:</strong> $apartment</p>
-            <p><strong>Message:</strong> $message</p>
+            <hr style='margin: 15px 0;'>
+            <p><small>Submitted at: " . date('Y-m-d H:i:s') . "</small></p>
         ";
 
         // Send the email
         $mail->send();
 
         // Success message and redirect
-        echo "<script>
-                alert('Your message has been sent successfully!');
-                window.location.href = 'index.html';
-              </script>";
+        header("Location: index.html?status=success&message=Thank you! Your inquiry has been submitted successfully.");
+        exit();
     } catch (Exception $e) {
         // Error message and redirect
-        echo "<script>
-                alert('Error sending email. Please try again later.');
-                window.location.href = 'index.html';
-              </script>";
+        header("Location: index.html?status=error&message=Error sending your message. Please try again later.");
+        exit();
     }
 } else {
     // Invalid request handling
-    echo "<script>
-            alert('Invalid request.');
-            window.location.href = 'index.html';
-          </script>";
+    header("Location: index.html?status=error&message=Invalid request method.");
+    exit();
 }
 ?>
+<!-- $mail->Password = 'dezw ifes gvax tovk'; // Use App Password, NOT direct password -->

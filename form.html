@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
     <div class="max-w-4xl mt-6 mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold text-center mb-6">Contact Us</h1>
 
         <!-- Contact Form -->
-        <form action="submit_form.php" method="POST" class="space-y-6">
+        <form action="submit_form.php" method="POST" class="space-y-6" id="contactForm">
             <!-- Full Name -->
             <div>
                 <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name (Required)</label>
-                <input type="text" id="fullName" name="fullName"
+                <input placeholder="Full Name" type="text" id="fullName" name="fullName"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
             </div>
@@ -23,25 +25,24 @@
             <!-- Phone Number -->
             <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700">Phone (Required)</label>
-                <input type="tel" id="phone" name="phone"
+                <input placeholder="12345 67890" type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]{10}"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
+                <p id="phoneError" class="mt-1 text-sm text-red-600 hidden">Please enter exactly 10 digits (numbers
+                    only)</p>
             </div>
 
             <!-- Email -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">Email (Required)</label>
-                <input type="email" id="email" name="email"
+                <input placeholder="example@example.com" type="email" id="email" name="email"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
             </div>
 
-            <!-- Choose Apartment -->
-            <div>
-                <label for="apartment" class="block text-sm font-medium text-gray-700">Choose Apartment</label>
-                <input type="text" id="apartment" name="apartment"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
-                    readonly>
+            <!-- Dynamic Apartment Section -->
+            <div id="apartmentSection">
+                <!-- Will be filled by JavaScript -->
             </div>
 
             <!-- Flat Type Selection -->
@@ -57,13 +58,6 @@
                         <span>3BHK</span>
                     </label>
                 </div>
-            </div>
-
-            <!-- Message -->
-            <div>
-                <label for="message" class="block  text-sm font-medium text-gray-700">Message</label>
-                <textarea id="message" name="message" rows="4"
-                    class="mt-1 block w-full p-2 border sm:resize-none border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
 
             <!-- Submit Button -->
@@ -84,23 +78,72 @@
             return urlParams.get(param);
         }
 
-        // Function to set the value of the apartment field if the query parameter is present
-        function setApartmentField() {
+        // Function to dynamically create apartment field based on URL
+        function setupApartmentField() {
+            const apartmentSection = document.getElementById('apartmentSection');
             const apartment = getQueryParam('apartment');
+
             if (apartment) {
-                const apartmentInput = document.getElementById('apartment');
-                if (apartmentInput) {
-                    apartmentInput.value = apartment;
-                } else {
-                    console.error('Input field with id "apartment" not found.');
-                }
+                // Coming from "Get Quote" - show read-only field
+                apartmentSection.innerHTML = `
+                    <label for="apartment" class="block text-sm font-medium text-gray-700">Selected Apartment</label>
+                    <input type="text" id="apartment" name="apartment" value="${apartment}"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                        readonly>
+                `;
             } else {
-                console.warn('No "apartment" query parameter found in the URL.');
+                // Coming from "Contact Us" - show dropdown
+                apartmentSection.innerHTML = `
+                    <label for="apartment" class="block text-sm font-medium text-gray-700">Choose Apartment (Required)</label>
+                    <select id="apartment" name="apartment"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <option value="">-- Select an Apartment --</option>
+<option value="Raja Rani Dream Home">Raja Rani Dream Homes</option>
+<option value="Raja Rani Royal Homes">Raja Rani Royal Homes</option>
+<option value="Raja Rani Green Valley">Raja Rani Green Valley</option>
+                    </select>
+                `;
             }
         }
 
-        // Call the function when the page loads
-        window.onload = setApartmentField;
+        // Phone number validation
+        function setupPhoneValidation() {
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phoneError');
+
+            // Restrict to numbers only
+            phoneInput.addEventListener('input', function (e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+
+                // Show error if not exactly 10 digits
+                if (this.value.length !== 10 && this.value.length > 0) {
+                    phoneError.classList.remove('hidden');
+                } else {
+                    phoneError.classList.add('hidden');
+                }
+            });
+
+            // Validate on form submission
+            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                if (phoneInput.value.length !== 10) {
+                    e.preventDefault();
+                    phoneError.classList.remove('hidden');
+                    phoneInput.focus();
+                }
+            });
+        }
+
+        // Call the functions when the page loads
+        window.onload = function () {
+            setupApartmentField();
+            setupPhoneValidation();
+        };
     </script>
 </body>
+
 </html>
+
+<!-- <option value="">-- Select an Apartment --</option>
+<option value="Apartment A">Raja Rani Dream Homes</option>
+<option value="Apartment B">Raja Rani Royal Homes</option>
+<option value="Apartment C">Raja Rani Green Valley</option> -->
