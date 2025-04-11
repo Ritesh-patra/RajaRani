@@ -90,4 +90,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
-<!-- $mail->Password = 'dezw ifes gvax tovk'; // Use App Password, NOT direct password -->

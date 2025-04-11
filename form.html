@@ -4,146 +4,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Contact Form - Raja Rani Properties</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-    <div class="max-w-4xl mt-6 mx-auto bg-white p-8 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-center mb-6">Contact Us</h1>
-
-        <!-- Contact Form -->
-        <form action="submit_form.php" method="POST" class="space-y-6" id="contactForm">
-            <!-- Full Name -->
-            <div>
-                <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name (Required)</label>
-                <input placeholder="Full Name" type="text" id="fullName" name="fullName"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
-
-            <!-- Phone Number -->
-            <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700">Phone (Required)</label>
-                <input placeholder="12345 67890" type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]{10}"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-                <p id="phoneError" class="mt-1 text-sm text-red-600 hidden">Please enter exactly 10 digits (numbers
-                    only)</p>
-            </div>
-
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email (Required)</label>
-                <input placeholder="example@example.com" type="email" id="email" name="email"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
-
-            <!-- Dynamic Apartment Section -->
-            <div id="apartmentSection">
-                <!-- Will be filled by JavaScript -->
-            </div>
-
-            <!-- Flat Type Selection -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Select the Type of Flat (Required)</label>
-                <div class="mt-2 space-y-2">
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="2BHK" class="mr-2" required>
-                        <span>2BHK</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="flatType" value="3BHK" class="mr-2">
-                        <span>3BHK</span>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div>
-                <button type="submit"
-                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <!-- JavaScript -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("oDKVVQPEt62XkW9qK");
+        })();
+    </script>
     <script>
-        // Function to get query parameters from the URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        // Function to dynamically create apartment field based on URL
-        function setupApartmentField() {
-            const apartmentSection = document.getElementById('apartmentSection');
-            const apartment = getQueryParam('apartment');
-
-            if (apartment) {
-                // Coming from "Get Quote" - show read-only field
-                apartmentSection.innerHTML = `
-                    <label for="apartment" class="block text-sm font-medium text-gray-700">Selected Apartment</label>
-                    <input type="text" id="apartment" name="apartment" value="${apartment}"
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
-                        readonly>
-                `;
-            } else {
-                // Coming from "Contact Us" - show dropdown
-                apartmentSection.innerHTML = `
-                    <label for="apartment" class="block text-sm font-medium text-gray-700">Choose Apartment (Required)</label>
-                    <select id="apartment" name="apartment"
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <option value="">-- Select an Apartment --</option>
-<option value="Raja Rani Dream Home">Raja Rani Dream Homes</option>
-<option value="Raja Rani Royal Homes">Raja Rani Royal Homes</option>
-<option value="Raja Rani Green Valley">Raja Rani Green Valley</option>
-                    </select>
-                `;
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: "#3b82f6",
+                            foreground: "#ffffff"
+                        },
+                        destructive: {
+                            DEFAULT: "#ef4444",
+                            foreground: "#ffffff"
+                        }
+                    }
+                }
             }
         }
+    </script>
+</head>
 
-        // Phone number validation
-        function setupPhoneValidation() {
-            const phoneInput = document.getElementById('phone');
-            const phoneError = document.getElementById('phoneError');
+<body class="bg-gradient-to-b from-blue-50 to-white min-h-screen py-12 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+        <div class="w-full bg-white rounded-lg shadow-lg border-t-4 border-t-primary">
+            <!-- Card Header -->
+            <div class="p-6 border-b">
+                <h1 class="text-3xl font-bold text-center">Contact Us</h1>
+                <p class="text-center text-gray-500 mt-1">
+                    Fill out the form below to inquire about our premium apartments
+                </p>
+            </div>
 
-            // Restrict to numbers only
-            phoneInput.addEventListener('input', function (e) {
-                this.value = this.value.replace(/[^0-9]/g, '');
+            <!-- Card Content -->
+            <div class="p-6">
+                <!-- Status Alert (Hidden by default) -->
+                <div id="statusAlert" class="mb-6 p-4 rounded-md hidden">
+                    <div class="flex items-center">
+                        <span id="statusIcon" class="mr-2"></span>
+                        <div>
+                            <h3 id="statusTitle" class="font-medium"></h3>
+                            <p id="statusMessage" class="text-sm"></p>
+                        </div>
+                    </div>
+                </div>
 
-                // Show error if not exactly 10 digits
-                if (this.value.length !== 10 && this.value.length > 0) {
-                    phoneError.classList.remove('hidden');
-                } else {
-                    phoneError.classList.add('hidden');
+                <form id="contactForm" class="space-y-6">
+                    <!-- Full Name -->
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="John Doe" required
+                            class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        <p id="fullNameError" class="text-destructive text-sm mt-1 hidden"></p>
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="10-digit number" required maxlength="10"
+                            class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        <p class="text-xs text-gray-500 mt-1">Enter a 10-digit phone number without country code</p>
+                        <p id="phoneError" class="text-destructive text-sm mt-1 hidden"></p>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required
+                            class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        <p id="emailError" class="text-destructive text-sm mt-1 hidden"></p>
+                    </div>
+
+                    <!-- Apartment -->
+                    <div id="apartmentSection">
+                        <label for="apartment" class="block text-sm font-medium text-gray-700">Apartment Project</label>
+                        <select id="apartment" name="apartment" required
+                            class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="">-- Select an Apartment --</option>
+                            <option value="Raja Rani Dream Home">Raja Rani Dream Homes</option>
+                            <option value="Raja Rani Royal Homes">Raja Rani Royal Homes</option>
+                            <option value="Raja Rani Green Valley">Raja Rani Green Valley</option>
+                        </select>
+                        <p id="apartmentError" class="text-destructive text-sm mt-1 hidden"></p>
+                    </div>
+
+                    <!-- Flat Type -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Flat Type</label>
+                        <div class="mt-2 space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="flatType" value="2BHK" checked class="mr-2 text-primary">
+                                <span>2BHK</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="flatType" value="3BHK" class="mr-2 text-primary">
+                                <span>3BHK</span>
+                            </label>
+                        </div>
+                        <p id="flatTypeError" class="text-destructive text-sm mt-1 hidden"></p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitButton"
+                        class="w-full bg-primary text-white py-2.5 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        Submit Inquiry
+                    </button>
+                </form>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="p-6 border-t text-center">
+                <p class="text-sm text-gray-500">
+                    Your information is secure and will only be used to contact you about your inquiry.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get form elements
+            const form = document.getElementById('contactForm');
+            const submitButton = document.getElementById('submitButton');
+            const statusAlert = document.getElementById('statusAlert');
+            const statusIcon = document.getElementById('statusIcon');
+            const statusTitle = document.getElementById('statusTitle');
+            const statusMessage = document.getElementById('statusMessage');
+
+            // Setup apartment field based on URL parameter
+            function setupApartmentField() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const apartment = urlParams.get('apartment');
+                const apartmentSection = document.getElementById('apartmentSection');
+
+                if (apartment) {
+                    apartmentSection.innerHTML = `
+                        <label for="apartment" class="block text-sm font-medium text-gray-700">Selected Apartment</label>
+                        <input type="text" id="apartment" name="apartment" value="${apartment}" readonly 
+                            class="mt-1 block w-full p-2.5 border border-gray-300 rounded-md bg-gray-100">
+                    `;
                 }
+            }
+
+            // Show form validation error
+            function showError(fieldId, message) {
+                const errorElement = document.getElementById(`${fieldId}Error`);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.classList.remove('hidden');
+                }
+
+                // Add red border to the input
+                const inputElement = document.getElementById(fieldId);
+                if (inputElement) {
+                    inputElement.classList.add('border-destructive');
+                }
+            }
+
+            // Clear all errors
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('[id$="Error"]');
+                errorElements.forEach(element => {
+                    element.classList.add('hidden');
+                    element.textContent = '';
+                });
+
+                // Remove red borders
+                const inputElements = form.querySelectorAll('input, select, textarea');
+                inputElements.forEach(element => {
+                    element.classList.remove('border-destructive');
+                });
+            }
+
+            // Show status alert
+            function showStatusAlert(type, title, message) {
+                statusAlert.className = type === 'success'
+                    ? 'mb-6 p-4 rounded-md bg-green-100 text-green-800'
+                    : 'mb-6 p-4 rounded-md bg-red-100 text-red-800';
+
+                statusIcon.innerHTML = type === 'success'
+                    ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>'
+                    : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>';
+
+                statusTitle.textContent = title;
+                statusMessage.textContent = message;
+                statusAlert.classList.remove('hidden');
+            }
+
+            // Validate form
+            function validateForm() {
+                let isValid = true;
+                clearErrors();
+
+                // Validate full name
+                const fullName = document.getElementById('fullName').value.trim();
+                if (fullName.length < 2) {
+                    showError('fullName', 'Name must be at least 2 characters');
+                    isValid = false;
+                }
+
+                // Validate phone
+                const phone = document.getElementById('phone').value.trim();
+                if (!/^\d{10}$/.test(phone)) {
+                    showError('phone', 'Phone number must be 10 digits');
+                    isValid = false;
+                }
+
+                // Validate email
+                const email = document.getElementById('email').value.trim();
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showError('email', 'Please enter a valid email address');
+                    isValid = false;
+                }
+
+                // Validate apartment
+                const apartment = document.getElementById('apartment').value;
+                if (!apartment) {
+                    showError('apartment', 'Please select an apartment');
+                    isValid = false;
+                }
+
+      
+
+                return isValid;
+            }
+
+            // Handle form submission
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Submitting...
+                `;
+
+                // Get form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    apartment: document.getElementById('apartment').value,
+                    flatType: document.querySelector('input[name="flatType"]:checked').value
+                };
+
+                // Send email using EmailJS
+                emailjs.send("ritesh_11", "template_mjcm3wa", formData)
+                    .then(function () {
+                        // Show success message
+                        showStatusAlert('success', 'Success', 'Thank you! Your message has been sent successfully.');
+
+                        // Reset form
+                        form.reset();
+
+                        // Redirect to index.html after a short delay
+                        setTimeout(function () {
+                            window.location.href = 'thankyou.html';
+                        }, 2000);
+                    })
+                    .catch(function (error) {
+                        console.error('Error sending email:', error);
+                        showStatusAlert('error', 'Error', 'Failed to send message. Please try again later.');
+                    })
+                    .finally(function () {
+                        // Reset button state
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit Inquiry';
+                    });
             });
 
-            // Validate on form submission
-            document.getElementById('contactForm').addEventListener('submit', function (e) {
-                if (phoneInput.value.length !== 10) {
-                    e.preventDefault();
-                    phoneError.classList.remove('hidden');
-                    phoneInput.focus();
-                }
-            });
-        }
-
-        // Call the functions when the page loads
-        window.onload = function () {
+            // Initialize
             setupApartmentField();
-            setupPhoneValidation();
-        };
+        });
     </script>
 </body>
 
 </html>
-
-<!-- <option value="">-- Select an Apartment --</option>
-<option value="Apartment A">Raja Rani Dream Homes</option>
-<option value="Apartment B">Raja Rani Royal Homes</option>
-<option value="Apartment C">Raja Rani Green Valley</option> -->
